@@ -42,6 +42,9 @@ console.log(
 const res = await fetch("https://api.staging.klimagotchi.com/api/merge", {
     method: "POST",
     body: JSON.stringify(dataPackage),
+    headers: {
+        "Content-Type": "application/json",
+    },
 })
     .then((res) => {
         console.log(`✅ Received status code: ${res.status}`);
