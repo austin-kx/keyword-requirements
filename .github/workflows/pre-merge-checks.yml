@@ -1,7 +1,7 @@
 name: Pre-Merge Checks
 on:
     pull_request:
-        branches: [master] # Change the branch here from master to whatever main is called
+        branches: [master] # <-------- Change the branch here from master to whatever main is called
 
 jobs:
     version-check:
@@ -14,7 +14,7 @@ jobs:
                   fetch-depth: 0
 
             - name: Get Versions
-              # Change the branch here from master to whatever main is called
+              # <-------- Change the branch here from master to whatever main is called
               run: |
                   echo "PR_VERSION=$(cat VERSION)" >> $GITHUB_ENV
                   echo "MAIN_VERSION=$(git show origin/master:VERSION)" >> $GITHUB_ENV
