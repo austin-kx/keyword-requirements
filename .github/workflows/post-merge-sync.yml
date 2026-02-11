@@ -26,7 +26,7 @@ jobs:
             - name: Run External Sync Script
               shell: node {0}
               env:
-                  PR_BODY: ${{ github.event.pull_request.body }}
+                  PR_JSON: ${{ github.event.pull_request }}
                   NEW_VERSION: ${{ env.NEW_VERSION }}
                   OLD_VERSION: ${{ env.OLD_VERSION }}
 

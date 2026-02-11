@@ -1,4 +1,4 @@
-name: Main Protection
+name: Pre-Merge Checks
 on:
     pull_request:
         branches: [master] # Change the branch here from master to whatever main is called
