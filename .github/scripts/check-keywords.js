@@ -18,7 +18,7 @@ if (foundKeywords.length === 0) {
     process.exit(1);
 }
 
-console.log(`✅ Keyword Check: Keywords ${keywords} found`);
+console.log(`✅ Keyword Check: Keywords ${keywords.join(", ")} found`);
 
 // --- TODO: Store the PR information, and keywords into the app database ---
 
