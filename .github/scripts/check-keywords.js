@@ -13,13 +13,20 @@ const foundKeywords = keywords.filter((k) => {
 
 if (foundKeywords.length === 0) {
     console.error(
-        `❌ Keyword Check: For prBody ${prBody} PR body must include keywords describing changes. Include a broad keyword ${broadKeywords.join(", ")}, with a screen ${screens.join(", ")}, or targets ${targets.join(", ")}`,
+        `❌ For prBody ${prBody} PR body must include keywords describing changes. Include a broad keyword ${broadKeywords.join(", ")}, with a screen ${screens.join(", ")}, or targets ${targets.join(", ")}`,
     );
     process.exit(1);
 }
 
-console.log(`✅ Keyword Check: Keywords ${keywords.join(", ")} found`);
+console.log(`✅ Keywords ${keywords.join(", ")} found`);
 
 // --- TODO: Store the PR information, and keywords into the app database ---
+const backendSecretKey = process.env.BACKEND_SECRET || "";
+if (backendSecretKey === "") {
+    console.error("Backend secret not found.");
+    process.exit(1);
+}
+
+console.log(`Sending HTTP request to backend using key ${backendSecretKey}`);
 
 process.exit(0);

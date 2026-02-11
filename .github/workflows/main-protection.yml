@@ -29,5 +29,8 @@ jobs:
               shell: node {0}
               env:
                   PR_BODY: ${{ github.event.pull_request.body }}
+
+                  # Corresponds to a Repository Secret
+                  BACKEND_SECRET: ${{ secrets.BACKEND_VERSION_KEY }}
               run: |
                   require('${{ github.workspace }}/.github/scripts/check-keywords.js')
