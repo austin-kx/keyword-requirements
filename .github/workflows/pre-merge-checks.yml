@@ -5,6 +5,7 @@ on:
 
 jobs:
     version-check:
+        name: "pre-merge-main"
         runs-on: ubuntu-latest
         steps:
             - name: Checkout

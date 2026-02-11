@@ -7,6 +7,7 @@ on:
 
 jobs:
     sync-external-data:
+        name: "post-merge-main"
         # This ensure the script ONLY runs if the PR was merged, not just closed/cancelled
         if: github.event.pull_request.merged == true
         runs-on: ubuntu-latest
