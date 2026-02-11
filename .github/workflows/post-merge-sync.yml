@@ -2,7 +2,7 @@ name: Post-Merge Store
 
 on:
     pull_request:
-        branches: [master] # Change to whatever main is called
+        branches: [master] # <-------- Change to whatever main is called
         types: [closed]
 
 jobs:
