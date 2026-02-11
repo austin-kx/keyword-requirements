@@ -11,11 +11,6 @@ if (pr_ver === "") {
     process.exit(1);
 }
 
-if (main_ver === pr_ver) {
-    console.error("Error: PR VERSION is the same as mains VERSION");
-    process.exit(1);
-}
-
 function isHigher(v1, v2) {
     const p1 = v1.split(".").map(Number);
     const p2 = v2.split(".").map(Number);
@@ -29,9 +24,9 @@ function isHigher(v1, v2) {
 
 if (!isHigher(pr_ver, main_ver)) {
     console.error(
-        `Error: PR version ${pr_ver} is not higher than main version ${main_ver}`,
+        `❌ Error: PR version ${pr_ver} is not higher than main version ${main_ver}`,
     );
     process.exit(1);
 }
 
-console.log(`Version check passed, ${main_ver} -> ${pr_ver}`);
+console.log(`✅ Version check passed, ${main_ver} -> ${pr_ver}`);

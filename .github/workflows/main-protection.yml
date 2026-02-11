@@ -1,0 +1,36 @@
+name: Version Enforcement
+on:
+    pull_request:
+        branches: [master] # Change the branch here from master to whatever main is called
+
+jobs:
+    version-check:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Get Versions
+              # Change the branch here from master to whatever main is called
+              run: |
+                  echo "PR_VERSION=$(cat VERSION)" >> $GITHUB_ENV
+                  echo "MAIN_VERSION=$(git show origin/master:VERSION)" >> $GITHUB_ENV
+
+            - name: Run Version Script
+              shell: node {0}
+              env:
+                  PR_VERSION: ${{ env.PR_VERSION }}
+                  MAIN_VERSION: ${{ env.MAIN_VERSION }}
+              run: require('${{ github.workspace }}/.github/scripts/check-version.js')
+
+            - name: Run Keyword Script
+              shell: node {0}
+              env:
+                  PR_BODY: ${{ github.event.pull_request.body }}
+
+                  # Corresponds to a Repository Secret
+                  BACKEND_SECRET: ${{ secrets.BACKEND_VERSION_KEY }}
+              run: |
+                  require('${{ github.workspace }}/.github/scripts/check-keywords.js')
