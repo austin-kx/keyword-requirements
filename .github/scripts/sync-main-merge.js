@@ -24,8 +24,8 @@ const dataPackage = {
     version: newVersion,                // String such as 1.0.0
     oldVersion: oldVersion,             // String such as 0.6.2
     repository: process.env.GITHUB_REPOSITORY,
-    baseBranch: prInfo.baseBranch,
-    targetBranch: prInfo.targetBranch,
+    baseBranch: prJson.base.ref,
+    targetBranch: prJson.head.ref,
 
     title: prJson.title,                // String
     body: prJson.body,                  // String, can be quite long
