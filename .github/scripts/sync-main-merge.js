@@ -26,13 +26,31 @@ if (backendSecretKey === "") {
     process.exit(1);
 }
 
+// prettier-ignore
 const dataPackage = {
-    version: newVersion,
-    oldVersion: oldVersion,
-    prInfo: prInfo,
+    version: newVersion,            // String such as 1.0.0
+    oldVersion: oldVersion,         // String such as 0.6.2
+    repository: process.env.GITHUB_REPOSITORY,
+    branch: process.env.GITHUB_REF,
+
+    title: prInfo.title,            // String
+    body: prInfo.body,              // String, can be quite long
+    author: prInfo.author,          // String, Github username
+    mergedBy: prInfo.mergedBy,      // String, Github username
+    url: prInfo.url,                // Url
+    mergedAt: prInfo.mergedAt,      // Timestamp, UTC time such as 2026-02-11T18:40:57Z
 };
 
 console.log(
     `Sending HTTP request of ${JSON.stringify(dataPackage)} to backend using key ${backendSecretKey}`,
 );
+
+const res = await fetch("https://api.staging.klimagotchi.com/api/health")
+    .then((res) => {
+        console.log(`Received response of ${res.status}, body: ${res.body}`);
+    })
+    .catch((e) => {
+        console.error("Failed to contact endpoint. Error: ", e);
+    });
+
 process.exit(0);
