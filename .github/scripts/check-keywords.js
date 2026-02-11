@@ -13,7 +13,7 @@ const foundKeywords = keywords.filter((k) => {
 
 if (foundKeywords.length === 0) {
     console.error(
-        `Keyword Check: PR body must include keywords describing changes. Include a broad keyword ${broadKeywords}, with a screen ${screens}, or targets ${targets}`,
+        `Keyword Check: PR body must include keywords describing changes. Include a broad keyword ${broadKeywords.join(", ")}, with a screen ${screens.join(", ")}, or targets ${targets.join(", ")}`,
     );
     process.exit(1);
 }
