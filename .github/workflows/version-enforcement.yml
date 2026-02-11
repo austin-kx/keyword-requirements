@@ -20,4 +20,4 @@ jobs:
               env:
                   PR_VERSION: ${{ env.PR_VERSION }}
                   MAIN_VERSION: ${{ env.MAIN_VERSION }}
-              run: require('./.github/scripts/check-version.js')
+              run: require('${{ github.workspace }}/.github/scripts/check-version.js')
