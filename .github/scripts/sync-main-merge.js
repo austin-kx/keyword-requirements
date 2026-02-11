@@ -44,4 +44,13 @@ const dataPackage = {
 console.log(
     `Sending HTTP request of ${JSON.stringify(dataPackage)} to backend using key ${backendSecretKey}`,
 );
+
+const res = await fetch("https://api.staging.klimagotchi.com/api/health")
+    .then((res) => {
+        console.log(`Received response of ${res.status}, body: ${res.body}`);
+    })
+    .catch((e) => {
+        console.error("Failed to contact endpoint. Error: ", e);
+    });
+
 process.exit(0);
