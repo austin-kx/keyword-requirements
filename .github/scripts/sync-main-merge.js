@@ -28,7 +28,7 @@ const dataPackage = {
     targetBranch: prJson.head.ref,
 
     title: prJson.title,                // String
-    body: prJson.body,                  // String, can be quite long
+    body: prJson.body ?? "",                  // String, can be quite long
     author: prJson.user.login,          // String, Github username
     mergedBy: prJson.merged_by.login,   // String, Github username
     url: prJson.html_url,               // Url
