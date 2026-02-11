@@ -1,4 +1,21 @@
 const prBody = process.env.PR_BODY || "";
+
+const prJson = JSON.parse(process.env.PR_JSON);
+
+if (!prJson || prJson.length === 0) {
+    console.error("Failed to load prJson");
+    process.exit(1);
+}
+
+const prInfo = {
+    title: prJson.title,
+    body: prJson.body,
+    author: prJson.user.login,
+    mergedBy: prJson.merged_by.login,
+    url: prJson.html_url,
+    mergedAt: prJson.merged_at,
+};
+
 const newVersion = process.env.NEW_VERSION || "";
 const oldVersion = process.env.OLD_VERSION || "";
 
@@ -12,9 +29,7 @@ if (backendSecretKey === "") {
 const dataPackage = {
     version: newVersion,
     oldVersion: oldVersion,
-    prBody: prBody,
-    timestamp: new Date().toISOString(),
-    mergedBy: process.env.GITHUB_ACTOR,
+    prInfo: prInfo,
 };
 
 console.log(
