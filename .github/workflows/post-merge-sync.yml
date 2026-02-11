@@ -32,4 +32,5 @@ jobs:
 
                   # Corresponds to a repository secret
                   BACKEND_SECRET: ${{ secrets.BACKEND_VERSION_KEY }}
-              run: require(${{ github.workspace }}/.github/scripts/sync-main-merge.js)
+              run: |
+                  require('${{ github.workspace }}/.github/scripts/sync-main-merge.js')
