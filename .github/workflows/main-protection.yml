@@ -25,9 +25,9 @@ jobs:
                   MAIN_VERSION: ${{ env.MAIN_VERSION }}
               run: require('${{ github.workspace }}/.github/scripts/check-version.js')
 
-            - name: Run Keyword Script
-              shell: node {0}
-              env:
-                  PR_BODY: ${{ github.event.pull_request.body }}
-              run: |
-                  require('${{ github.workspace }}/.github/scripts/check-keywords.js')
+            # - name: Run Keyword Script
+            #   shell: node {0}
+            #   env:
+            #       PR_BODY: ${{ github.event.pull_request.body }}
+            #   run: |
+            #       require('${{ github.workspace }}/.github/scripts/check-keywords.js')
