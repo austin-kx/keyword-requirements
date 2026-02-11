@@ -14,6 +14,9 @@ const prInfo = {
     mergedBy: prJson.merged_by.login,
     url: prJson.html_url,
     mergedAt: prJson.merged_at,
+
+    baseBranch: prJson.base.ref,
+    targetBranch: prJson.head.ref,
 };
 
 const newVersion = process.env.NEW_VERSION || "";
@@ -31,7 +34,8 @@ const dataPackage = {
     version: newVersion,            // String such as 1.0.0
     oldVersion: oldVersion,         // String such as 0.6.2
     repository: process.env.GITHUB_REPOSITORY,
-    branch: process.env.GITHUB_REF,
+    baseBranch: prInfo.baseBranch,
+    targetBranch: prInfo.targetBranch,
 
     title: prInfo.title,            // String
     body: prInfo.body,              // String, can be quite long

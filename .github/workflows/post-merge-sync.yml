@@ -16,10 +16,11 @@ jobs:
               with:
                   fetch-depth: 0
 
-            - name: Get Versions
+            - name: Get Versions & Branch
               run: |
                   # Since it's merged, the 'current' version is now on main
                   echo "NEW_VERSION=$(cat VERSION)" >> $GITHUB_ENV
+
                   # Get the previous version (before this merge)
                   echo "OLD_VERSION=$(git show HEAD~1:VERSION)" >> $GITHUB_ENV
 
