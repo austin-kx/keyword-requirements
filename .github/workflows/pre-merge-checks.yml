@@ -25,6 +25,7 @@ jobs:
                   MAIN_VERSION: ${{ env.MAIN_VERSION }}
               run: require('${{ github.workspace }}/.github/scripts/check-version.js')
 
+            # This keyword detection is commented out and probably overkill
             # - name: Run Keyword Script
             #   shell: node {0}
             #   env:
