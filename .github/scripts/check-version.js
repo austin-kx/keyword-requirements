@@ -24,9 +24,9 @@ function isHigher(v1, v2) {
 
 if (!isHigher(pr_ver, main_ver)) {
     console.error(
-        `Error: PR version ${pr_ver} is not higher than main version ${main_ver}`,
+        `❌ Error: PR version ${pr_ver} is not higher than main version ${main_ver}`,
     );
     process.exit(1);
 }
 
-console.log(`Version check passed, ${main_ver} -> ${pr_ver}`);
+console.log(`✅ Version check passed, ${main_ver} -> ${pr_ver}`);

@@ -13,12 +13,12 @@ const foundKeywords = keywords.filter((k) => {
 
 if (foundKeywords.length === 0) {
     console.error(
-        `Keyword Check: PR body must include keywords describing changes. Include a broad keyword ${broadKeywords.join(", ")}, with a screen ${screens.join(", ")}, or targets ${targets.join(", ")}`,
+        `❌ Keyword Check: For prBody ${prBody} PR body must include keywords describing changes. Include a broad keyword ${broadKeywords.join(", ")}, with a screen ${screens.join(", ")}, or targets ${targets.join(", ")}`,
     );
     process.exit(1);
 }
 
-console.log(`Keyword Check: Keywords ${keywords} found`);
+console.log(`✅ Keyword Check: Keywords ${keywords} found`);
 
 // --- TODO: Store the PR information, and keywords into the app database ---
 
