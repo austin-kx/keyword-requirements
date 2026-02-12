@@ -40,4 +40,4 @@ The post-merge action which submits information to the database will **not** wor
 
 2. Click **New repository secret**
 
-3. Name the secret **BACKEND_VERSION_KEY** and give it a value which matches the API
+3. Name the secret **BACKEND_VERSION_KEY** and give it a value which matches the one being used by the API. That name sucks so feel free to change it.
